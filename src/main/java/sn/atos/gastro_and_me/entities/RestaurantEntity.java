@@ -1,15 +1,10 @@
 package sn.atos.gastro_and_me.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import sn.atos.gastro_and_me.entities.enums.Speciality;
+
+import java.util.List;
 
 /**
  *
@@ -36,6 +31,9 @@ public class RestaurantEntity {
     @Column(name = "speciality")
     @Enumerated(EnumType.STRING)
     private Speciality speciality;
+
+    @OneToMany(mappedBy = "restaurant")
+    private List<RatingEntity> ratings;
 
     public Long getId() {
         return id;
@@ -75,6 +73,14 @@ public class RestaurantEntity {
 
     public void setSpeciality(Speciality speciality) {
         this.speciality = speciality;
+    }
+
+    public List<RatingEntity> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<RatingEntity> ratings) {
+        this.ratings = ratings;
     }
 
     @Override
