@@ -13,8 +13,8 @@ import sn.atos.gastro_and_me.repositories.RestaurantRepository;
 public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantRepository restaurantRepository;
 
-    public RestaurantServiceImpl(RestaurantRepository restaurantReposotory) {
-        this.restaurantRepository = restaurantReposotory;
+    public RestaurantServiceImpl(RestaurantRepository restaurantRepository) {
+        this.restaurantRepository = restaurantRepository;
     }
 
     @Override
@@ -34,9 +34,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public RestaurantEntity getRestaurant(Long id) {
-        RestaurantEntity restaurantEntity = restaurantRepository.getOne(id);
-        System.out.println(restaurantEntity.toString());
-        return restaurantEntity;
+        return  restaurantRepository.findById(id).get();
     }
 
     @Override
