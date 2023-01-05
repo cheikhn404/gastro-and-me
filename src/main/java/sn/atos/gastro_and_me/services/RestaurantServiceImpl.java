@@ -19,6 +19,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public RestaurantEntity addRestaurant(RestaurantEntity restaurant) {
+
         return restaurantRepository.save(restaurant);
     }
 
