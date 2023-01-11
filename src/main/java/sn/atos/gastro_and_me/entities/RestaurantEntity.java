@@ -1,9 +1,13 @@
 package sn.atos.gastro_and_me.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import sn.atos.gastro_and_me.entities.enums.Speciality;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,7 +23,8 @@ public class RestaurantEntity {
     private Long id;
 
     @Column(name = "name", nullable = false)
-    @NotEmpty
+    @NotBlank(message = "veillez renseigner ce champs...!")
+    @Size(min = 4, max = 50)
     private String name;
 
     @Column(name = "address")
@@ -32,6 +37,8 @@ public class RestaurantEntity {
     @Enumerated(EnumType.STRING)
     private Speciality speciality;
 
+    private Date creationDate;
+
     @OneToMany(mappedBy = "restaurant")
     private List<RatingEntity> ratings;
 
@@ -41,6 +48,14 @@ public class RestaurantEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
     public String getName() {
