@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import sn.atos.gastro_and_me.dto.RestaurantDTO;
 import sn.atos.gastro_and_me.entities.RestaurantEntity;
 import sn.atos.gastro_and_me.services.RestaurantService;
 
@@ -25,7 +26,7 @@ public class RestaurantController {
     }
     
     @PostMapping("/restaurants")
-    public RestaurantEntity addRestaurant(@RequestBody @Valid RestaurantEntity restaurant) {
+    public RestaurantDTO addRestaurant(@RequestBody @Valid RestaurantDTO restaurant) {
         return restaurantService.addRestaurant(restaurant);
     }
     

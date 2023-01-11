@@ -1,6 +1,8 @@
 package sn.atos.gastro_and_me.services;
 
 import java.util.List;
+
+import sn.atos.gastro_and_me.dto.RestaurantDTO;
 import sn.atos.gastro_and_me.entities.RestaurantEntity;
 
 /**
@@ -9,7 +11,7 @@ import sn.atos.gastro_and_me.entities.RestaurantEntity;
  */
 public interface RestaurantService {
     
-    RestaurantEntity addRestaurant(RestaurantEntity restaurant);
+    RestaurantDTO addRestaurant(RestaurantDTO restaurant);
     
     RestaurantEntity editRestaurant(RestaurantEntity restaurant);
     

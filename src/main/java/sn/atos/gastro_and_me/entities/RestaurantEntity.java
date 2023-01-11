@@ -35,6 +35,18 @@ public class RestaurantEntity {
     @OneToMany(mappedBy = "restaurant")
     private List<RatingEntity> ratings;
 
+    public RestaurantEntity() {
+    }
+
+    public RestaurantEntity(Long id, String name, String address, String phoneNumber, Speciality speciality, List<RatingEntity> ratings) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.speciality = speciality;
+        this.ratings = ratings;
+    }
+
     public Long getId() {
         return id;
     }
