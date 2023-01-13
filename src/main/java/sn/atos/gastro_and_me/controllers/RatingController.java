@@ -1,6 +1,7 @@
 package sn.atos.gastro_and_me.controllers;
 
 import org.springframework.web.bind.annotation.*;
+import sn.atos.gastro_and_me.dto.RatingDTO;
 import sn.atos.gastro_and_me.entities.RatingEntity;
 import sn.atos.gastro_and_me.services.RatingService;
 
@@ -16,12 +17,12 @@ public class RatingController {
     }
 
     @PostMapping("/ratings")
-    public RatingEntity addRating(@RequestBody @Valid RatingEntity rating) {
-        return ratingService.addRating(rating);
+    public RatingDTO addRating(@RequestBody @Valid RatingDTO ratingDTO) {
+        return ratingService.addRating(ratingDTO);
     }
 
     @GetMapping("/ratings")
-    public List<RatingEntity> getRatings() {
+    public List<RatingDTO> getRatings() {
         return ratingService.getRatings();
     }
 
