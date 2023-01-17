@@ -1,10 +1,12 @@
 package sn.atos.gastro_and_me.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import sn.atos.gastro_and_me.dto.RestaurantDTO;
 import sn.atos.gastro_and_me.entities.RestaurantEntity;
+import sn.atos.gastro_and_me.exceptions.ResourceNotFoundException;
 import sn.atos.gastro_and_me.mappers.RestaurantMapper;
 import sn.atos.gastro_and_me.repositories.RestaurantRepository;
 
@@ -46,7 +48,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public RestaurantEntity getRestaurant(Long id) {
-        return restaurantRepository.findById(id).get();
+        Optional<RestaurantEntity> optionalRestaurant = restaurantRepository.findById(id);
+        if (!optionalRestaurant.isPresent()){
+           throw new ResourceNotFoundException("Restaurant with id = "+id+" not found");
+        }
+        return optionalRestaurant.get();
     }
 
     @Override
